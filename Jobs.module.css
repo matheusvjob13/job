@@ -1,0 +1,155 @@
+.jobs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 3em 1em;
+  margin-top: -2em;
+}
+.job {
+  align-self: center;
+  background: white;
+  position: relative;
+  margin: 2em 0;
+  border-radius: 8px;
+  padding: 0.2em 1.2em;
+  box-shadow: 6px 6px 2em rgba(0, 0, 0, 0.3);
+  width: 95vw;
+  min-width: 18em;
+}
+.job::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background: hsl(180, 29%, 50%);
+  transform: scaleY(0);
+  height: 100%;
+  transition: 0.5s linear;
+  transform-origin: bottom;
+}
+.job:hover::before {
+  transform: scaleY(1);
+}
+.companyLogo {
+  position: absolute;
+  transform: translateY(-50%);
+  width: 2.7em;
+  height: 2.7em;
+  border-radius: 50%;
+}
+
+.companyLogo img {
+  width: 100%;
+  height: 100%;
+}
+
+.company,
+.features {
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.company span:not(:last-child) {
+  margin-right: 1em;
+}
+.company span:first-child {
+  color: hsl(180, 29%, 50%);
+  font-weight: bold;
+}
+.company span:not(:first-child) {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+.new {
+  background: hsl(180, 29%, 50%);
+}
+.featured {
+  background: hsl(180, 14%, 20%);
+}
+.position {
+  margin-top: 0.5em;
+}
+.features {
+  margin-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid hsl(180, 8%, 52%);
+}
+.features span {
+  color: hsl(180, 8%, 52%);
+}
+
+.features span:not(:first-child) {
+  position: relative;
+  padding-left: 1em;
+  margin-left: 1em;
+}
+.features span:not(:first-child)::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: hsl(180, 8%, 52%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: -2%;
+  transform: translateY(-25%);
+}
+
+@media screen and (min-width: 600px) {
+  .job {
+    width: 90vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .job {
+    display: grid;
+    grid-template-columns: 10% auto 40%;
+    grid-template-rows: 30% 20% 20%;
+    grid-template-areas: "logo company  tags" "logo position  tags" "logo features  tags";
+    padding: 1em;
+    padding-right: 0;
+    column-gap: 15px;
+    row-gap: 10px;
+
+    align-items: center;
+  }
+  .company {
+    grid-area: company;
+    margin-top: 0;
+  }
+  .features {
+    margin-top: 0;
+    border: none;
+    padding-bottom: 0;
+    height: fit-content;
+    grid-area: features;
+  }
+  .position {
+    margin-top: 0;
+    height: fit-content;
+    grid-area: position;
+  }
+  .companyLogo {
+    position: static;
+    transform: none;
+    width: 4.5em;
+    height: 4.5em;
+    align-self: center;
+    justify-self: center;
+    grid-area: logo;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .job {
+    grid-template-columns: 10% auto 45%;
+    width: 80vw;
+    max-width: 55em;
+  }
+}
